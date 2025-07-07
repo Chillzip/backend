@@ -1,8 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint, jsonify
 
-db = SQLAlchemy()
+user_bp = Blueprint('user', __name__)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
+@user_bp.route('/test', methods=['GET'])
+def test_user():
+    return jsonify({'message': 'User route is working!'})

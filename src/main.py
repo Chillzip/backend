@@ -1,12 +1,18 @@
 from flask import Flask
-from src.routes.test import test_bp
-from src.routes.user import user_bp
+from routes.auth import auth_bp
+from routes.user import user_bp
+from routes.payment import payment_bp
+from routes.process import process_bp
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_pyfile('config.py')
 
-# Register Blueprints
-app.register_blueprint(test_bp, url_prefix="/test")
-app.register_blueprint(user_bp, url_prefix="/user")
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(user_bp, url_prefix='/user')
+    app.register_blueprint(payment_bp, url_prefix='/payment')
+    app.register_blueprint(process_bp, url_prefix='/process')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    return app
+
+app = create_app()
