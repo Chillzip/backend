@@ -1,6 +1,5 @@
-from src import create_app
+# wsgi.py
+from src.main import app
 
-app = create_app()
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
