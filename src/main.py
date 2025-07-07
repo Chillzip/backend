@@ -13,6 +13,10 @@ def create_app():
     app.register_blueprint(payment_bp, url_prefix='/payment')
     app.register_blueprint(process_bp, url_prefix='/process')
 
+    @app.route("/")
+    def index():
+        return "ChillZip backend is live!"
+
     return app
 
 app = create_app()
