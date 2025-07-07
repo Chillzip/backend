@@ -1,8 +1,8 @@
 from flask import Flask
-from routes.auth import auth_bp
-from routes.user import user_bp
-from routes.payment import payment_bp
-from routes.process import process_bp
+from src.routes.auth import auth_bp
+from src.routes.user import user_bp
+from src.routes.payment import payment_bp
+from src.routes.process import process_bp
 
 def create_app():
     app = Flask(__name__)
